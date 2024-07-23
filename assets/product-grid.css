@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     gap : 3%;
-    background: red;
+    background: white;
     padding: 2vw;
     justify-content: center;
 }
