@@ -26,6 +26,42 @@
         "button_text_color": "#ffffff"
       }
     },
+    "bilal_prduct_grid_CewijV": {
+      "type": "bilal-prduct-grid",
+      "blocks": {
+        "product_wMMrFd": {
+          "type": "product",
+          "settings": {
+            "product": "black-leather-bag",
+            "dot_horizontal": 50,
+            "dot_vertical": 50
+          }
+        },
+        "product_xd3M4i": {
+          "type": "product",
+          "settings": {
+            "product": "blue-silk-tuxedo",
+            "dot_horizontal": 50,
+            "dot_vertical": 50
+          }
+        },
+        "product_FczLUU": {
+          "type": "product",
+          "settings": {
+            "product": "chequered-red-shirt",
+            "dot_horizontal": 50,
+            "dot_vertical": 50
+          }
+        }
+      },
+      "block_order": [
+        "product_wMMrFd",
+        "product_xd3M4i",
+        "product_FczLUU"
+      ],
+      "settings": {
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -96,6 +132,7 @@
   },
   "order": [
     "bilal_img_banner_nd3w3h",
+    "bilal_prduct_grid_CewijV",
     "image_banner",
     "featured_collection"
   ]
