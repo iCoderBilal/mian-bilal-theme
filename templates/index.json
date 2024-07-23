@@ -12,7 +12,7 @@
     "bilal_img_banner_nd3w3h": {
       "type": "bilal-img-banner",
       "settings": {
-        "banner_image": "shopify:\/\/shop_images\/young-man-in-bright-fashion_925x_b3b7ebd6-c91f-496a-a516-45403497ea25.jpg",
+        "banner_image": "shopify:\/\/shop_images\/Group_1000007949.png",
         "banner_heading": "",
         "banner_subheading": "",
         "banner_button_text": "Hello",
@@ -21,8 +21,8 @@
         "text_alignment": "left",
         "subheading_color": "#000000",
         "button_background_color": "#000000",
-        "background_color": "#fff",
-        "button_text_color": "#fff"
+        "background_color": "#ffffff",
+        "button_text_color": "#ffffff"
       }
     },
     "image_banner": {
