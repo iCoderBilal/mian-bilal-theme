@@ -62,6 +62,27 @@ display : flex;
 align-items: flex-end;
 justify-content : {% if section.settings.text_alignment == 'left' %} flex-start {% else %} center {% endif %}
 }
+
+#image-banner .banner-button{
+display: inline-block;
+padding : 10px 20px;
+text-decoration : none;
+border-radius : 5px;
+margin-top: 10px
+}
+
+#image-banner .banner-button:hover{
+background-color : white;
+color: black;
+}
+
+.banner-content h1{
+font-size: 3.5vw
+}
+
+.banner-content p{
+font-size : 1.2vw;
+}
 </style>
 
 {% schema %}
