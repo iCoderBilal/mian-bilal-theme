@@ -24,12 +24,13 @@
 }
 
 .product-dot{
-font-size: 60px;
+font-size: 70px;
 
 border-radius: 50%;
 position: absolute;
 z-index: 999;
 color:black;
+cursor: pointer;
 
 }
 
