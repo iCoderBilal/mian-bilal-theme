@@ -12,6 +12,7 @@
     "bilal_img_banner_nd3w3h": {
       "type": "bilal-img-banner",
       "settings": {
+        "banner_image": "shopify:\/\/shop_images\/Group_1000007949.png",
         "banner_heading": "",
         "banner_subheading": "",
         "banner_button_text": "Hello",
