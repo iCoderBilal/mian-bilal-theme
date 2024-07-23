@@ -43,6 +43,99 @@ color:black;
     font-size: 22px;
 }
 
+
+#product-popup{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0,0,0.8);
+    z-index: 1000;
+}
+
+#product-popup .popup-content{
+    background-color: #fff;
+    padding: 70px 20px 40px 20px;
+    border-radius: 5px;
+    max-width: 26vw;
+    display: flex;
+    gap: 20px;
+    position: relative;
+    flex-wrap: wrap;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#product-popup .pop-up-featured-img{
+    width : 30%;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+}
+
+#product-popup .product-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-basis: 60%;
+}
+
+#product-popup .product-details h2{
+    font-size: 16px;
+}
+
+#product-popup .product-details .product-price{
+    font-size: 16px;
+}
+
+.product-details p{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+
+
+#product-popup select{
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+}
+
+#product-popup button{
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+
+#product-popup button:hover{
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #000;
+}
+
+#product-popup #close-popup{
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: transparent;
+    color: #000;
+}
+
+#product-popup .addCartPart{
+    flex-basis: 100%;
+}
+
+
 @media screen and (max-width : 650px) {
     .product-grid{
         gap: 2%;
