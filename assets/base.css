@@ -2053,9 +2053,9 @@ input[type='checkbox'] {
 }
 
 /* component-cart-count-bubble */
-.cart-count-bubble:empty {
+/* .cart-count-bubble:empty {
   display: none;
-}
+} */
 
 .cart-count-bubble {
   position: absolute;
