@@ -32,12 +32,8 @@ background-position : center;
 display : flex;
 align-items : center;
 justify-content : center;
-{% if section.settings.banner_image != blank %}
-   
-    background-image: url("{{ section.settings.banner_image | img_url : '1920x'}}");
-{% else %}
-background-image: url("{{ section.settings.banner_image | img_url}}");
-{% endif %}
+background-image: url("{{ section.settings.banner_image | img_url : '1920x'}}");
+
  
    {% if section.settings.banner_size == "large" %}
     height : 900px;
