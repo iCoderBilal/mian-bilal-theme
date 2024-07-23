@@ -52,12 +52,39 @@
             "dot_horizontal": 50,
             "dot_vertical": 50
           }
+        },
+        "product_hnJFPR": {
+          "type": "product",
+          "settings": {
+            "product": "classic-leather-jacket",
+            "dot_horizontal": 50,
+            "dot_vertical": 50
+          }
+        },
+        "product_i7TAYi": {
+          "type": "product",
+          "settings": {
+            "product": "classic-varsity-top",
+            "dot_horizontal": 50,
+            "dot_vertical": 50
+          }
+        },
+        "product_rBYtgm": {
+          "type": "product",
+          "settings": {
+            "product": "dark-denim-top",
+            "dot_horizontal": 50,
+            "dot_vertical": 50
+          }
         }
       },
       "block_order": [
         "product_wMMrFd",
         "product_xd3M4i",
-        "product_FczLUU"
+        "product_FczLUU",
+        "product_hnJFPR",
+        "product_i7TAYi",
+        "product_rBYtgm"
       ],
       "settings": {
       }
