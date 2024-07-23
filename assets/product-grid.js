@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         variantHtml += <option value="${variant.id}">${ variant.title } - ${ variant.price / 100 } ${ shopify.currency.active }</option>;
                     });
 
+
+                    console.log("this is the popu")
                     popup.innerHTML = `
                 <div class="popup-content">
                 <h1> This is the Pop Up</h1>
