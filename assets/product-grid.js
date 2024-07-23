@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (cartCountBubble) {
                     cartCountBubble.querySelector("span[aria-hidden='true']").textContent = cartItemCount;
-                    cartCountBubble.querySelector(".visually-hidden").textContent = `${cartItemCount} item${cartItemCount !== 1 ? 's' : ''}`;
+                    cartCountBubble.querySelector(".visually-hidden").textContent = `${cartItemCount} item${cartItemCount !== 0 ? 's' : ''}`;
                 }
             });
     }
