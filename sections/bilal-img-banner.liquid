@@ -1,3 +1,6 @@
+
+
+
 <section id="image-banner">
 <div class="banner">
 <div class="banner-content" style="text-align : {{ section.settings.text_alignment }};">
@@ -12,7 +15,38 @@
 </div>
 
 </section>
+<style>
+#image-banner{
+position: relative;
+overflow : hidden;
+background-color : {{ section.settings.background_color }};
+}
 
+
+#image-banner .banner{
+width: 100%;
+background-size : cover;
+background-position : center;
+display : flex;
+align-items : center;
+justify-content : center;
+{% if section.settings.banner_image %}
+    background-image : url("{{ section.settings.banner_image | img_url : "1920x"}}")
+    {% else %}
+    background-image : url("https://cdn.shopify.com/s/files/1/0886/0726/0966/files/Frame_1.png?v=1721758573");
+
+{% endif %}   
+   {% if section.settings.banner_size == "large" %}
+    height : 900px;
+    {% elsif section.settings.banner_size == "medium" %}     
+    height : 780px;
+
+    {% else %}
+    height :  700px;
+
+   {% endif %}
+}
+</style>
 
 {% schema %}
 {
