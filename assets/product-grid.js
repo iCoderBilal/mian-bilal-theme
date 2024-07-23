@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     productBlocks.forEach(block => {
         const dot = block.querySelector(".product-dot");
         dot.addEventListener("click", function (event) {
-            event.stopPropagation(); // Prevent the click event from bubbling up to the product block
+            event.stopPropagation();
             const productHandle = block.dataset.productHandle;
             fetch(`/products/${productHandle}.js`)
                 .then(response => response.json())
@@ -20,24 +20,22 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
 
                     popup.innerHTML = `
-              <div class="popup-content">
-                <img class="pop-up-featured-img" src="${product.featured_image}" alt="${product.title}" />
-                <div class="product-details">
-                  <div>
-                    <h2>${product.title}</h2>
-                    <p class="product-price">${product.price / 100} ${Shopify.currency.active}</p>
-                    <p>${product.description}</p>
-                    
-                  </div>
-                 
-                </div>
-                 <div class="addCartPart">
-                    <select id="product-variants">${variantsHtml}</select>
-                    <button id="add-to-cart">Add to Cart</button>
-                  </div>
-                <button id="close-popup">Close</button>
-              </div>
-            `;
+                        <div class="popup-content">
+                            <img class="pop-up-featured-img" src="${product.featured_image}" alt="${product.title}" />
+                            <div class="product-details">
+                                <div>
+                                    <h2>${product.title}</h2>
+                                    <p class="product-price">${product.price / 100} ${Shopify.currency.active}</p>
+                                    <p>${product.description}</p>
+                                </div>
+                            </div>
+                            <div class="addCartPart">
+                                <select id="product-variants">${variantsHtml}</select>
+                                <button id="add-to-cart">Add to Cart</button>
+                            </div>
+                            <button id="close-popup">Close</button>
+                        </div>
+                    `;
                     popup.style.display = "block";
 
                     document.getElementById("close-popup").addEventListener("click", function () {
@@ -82,12 +80,23 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch('/cart.js')
             .then(response => response.json())
             .then(cart => {
-                const cartCountBubble = document.querySelector(".cart-count-bubble");
+                let cartCountBubble = document.querySelector(".cart-count-bubble");
                 const cartItemCount = cart.item_count;
 
-                if (cartCountBubble) {
+                if (!cartCountBubble) {
+                    cartCountBubble = document.createElement("div");
+                    cartCountBubble.className = "cart-count-bubble";
+                    cartCountBubble.innerHTML = `
+                        <span aria-hidden="true">${cartItemCount}</span>
+                        <span class="visually-hidden">${cartItemCount} item${cartItemCount !== 1 ? 's' : ''}</span>
+                    `;
+                    const cartIconContainer = document.querySelector(".cart-icon-container");
+                    if (cartIconContainer) {
+                        cartIconContainer.appendChild(cartCountBubble);
+                    }
+                } else {
                     cartCountBubble.querySelector("span[aria-hidden='true']").textContent = cartItemCount;
-                    cartCountBubble.querySelector(".visually-hidden").textContent = `${cartItemCount} item${cartItemCount !== 0 ? 's' : ''}`;
+                    cartCountBubble.querySelector(".visually-hidden").textContent = `${cartItemCount} item${cartItemCount !== 1 ? 's' : ''}`;
                 }
             });
     }
