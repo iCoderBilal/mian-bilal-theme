@@ -9,6 +9,22 @@
 */
 {
   "sections": {
+    "bilal_img_banner_nd3w3h": {
+      "type": "bilal-img-banner",
+      "settings": {
+        "banner_image": "shopify:\/\/shop_images\/young-man-in-bright-fashion_925x_b3b7ebd6-c91f-496a-a516-45403497ea25.jpg",
+        "banner_heading": "",
+        "banner_subheading": "",
+        "banner_button_text": "",
+        "banner_button_link": "",
+        "banner_size": "small",
+        "text_alignment": "left",
+        "subheading_color": "#000000",
+        "button_background_color": "#000000",
+        "background_color": "#fff",
+        "button_text_color": "#fff"
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -75,17 +91,11 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
-    },
-    "bilal_img_banner_nd3w3h": {
-      "type": "bilal-img-banner",
-      "settings": {
-        "banner_image": "shopify:\/\/shop_images\/young-man-in-bright-fashion_925x_b3b7ebd6-c91f-496a-a516-45403497ea25.jpg"
-      }
     }
   },
   "order": [
+    "bilal_img_banner_nd3w3h",
     "image_banner",
-    "featured_collection",
-    "bilal_img_banner_nd3w3h"
+    "featured_collection"
   ]
 }
