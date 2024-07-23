@@ -24,9 +24,8 @@
 }
 
 .product-dot{
-width: 15px;
-height: 15px;
-background-color: red;
+width: 25px;
+
 border-radius: 50%;
 position: absolute;
 z-index: 999;

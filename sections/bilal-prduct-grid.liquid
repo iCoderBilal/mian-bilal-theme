@@ -6,7 +6,7 @@
             {% assign product = all_products[block.settings.product] %}
             <div class="product-image-wrapper">
               <img src="{{ product.featured_image | img_url: '720x' }}" alt="{{ product.title }}">
-              <div class="product-dot" style="left: {{ block.settings.dot_horizontal }}%; top: {{ block.settings.dot_vertical }}%;"></div>
+              <div class="product-dot" style="left: {{ block.settings.dot_horizontal }}%; top: {{ block.settings.dot_vertical }}%;">➕</div>
             </div>
 
           {% endif %}
