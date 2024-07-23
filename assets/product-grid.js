@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const productBlocks = document.querySelectorAll(".product-block");
 
     const popup = document.createElement("div");
-
     popup.id = "product-popup";
     popup.style.display = "none";
     document.body.appendChild(popup);
@@ -10,66 +9,74 @@ document.addEventListener("DOMContentLoaded", function () {
     productBlocks.forEach(block => {
         const dot = block.querySelector(".product-dot");
         dot.addEventListener("click", function (event) {
-            event.stopPropagation();
+            event.stopPropagation(); // Prevent the click event from bubbling up to the product block
             const productHandle = block.dataset.productHandle;
-            fetch(/product/${ productHandle }.js)
+            fetch(/products/${ productHandle }.js)
                 .then(response => response.json())
                 .then(product => {
-                    let variantHtml = "";
+                    let variantsHtml = "";
                     product.variants.forEach(variant => {
-                        variantHtml += <option value="${variant.id}">${ variant.title } - ${ variant.price / 100 } ${ shopify.currency.active }</option>;
+                        variantsHtml += <option value="${variant.id}">${ variant.title } - ${ variant.price / 100 } ${ Shopify.currency.active }</option>;
                     });
 
-
-
                     popup.innerHTML = `
-                <div class="popup-content">
-                <img  class="pop-up-featured-img" src="${product.featured_image}" />
-
+              <div class="popup-content">
+                <img class="pop-up-featured-img" src="${product.featured_image}" alt="${product.title}" />
                 <div class="product-details">
-                <div>
-                <h2>${product.titles}</h2>
-                <p class="product-price">${product.price / 100} ${shopify.currency.active}</p>
-                <p>${product.description}</p>
-                
+                  <div>
+                    <h2>${product.title}</h2>
+                    <p class="product-price">${product.price / 100} ${Shopify.currency.active}</p>
+                    <p>${product.description}</p>
+                    
+                  </div>
+                 
                 </div>
-                
-                </div>
-                <div class="addCartPage">
-                 <select id="product-variants">${variantsHTML}</select>
-                 <button id="add-to-cart">Add to Cart</button>
-                </div>
-                </div>
-                `;
-
+                 <div class="addCartPart">
+                    <select id="product-variants">${variantsHtml}</select>
+                    <button id="add-to-cart">Add to Cart</button>
+                  </div>
+                <button id="close-popup">Close</button>
+              </div>
+            `;
                     popup.style.display = "block";
+
                     document.getElementById("close-popup").addEventListener("click", function () {
                         popup.style.display = "none";
                     });
 
                     document.getElementById("add-to-cart").addEventListener("click", function () {
-                        const selectVariantId = document.getElementById("product-variants").value;
+                        const selectedVariantId = document.getElementById("product-variants").value;
                         fetch('/cart/add.js', {
-                            method: "POST",
+                            method: 'POST',
                             headers: {
-                                "Content-Type": 'application/json'
+                                'Content-Type': 'application/json'
                             },
                             body: JSON.stringify({
                                 id: selectedVariantId,
                                 quantity: 1
                             })
-
                         }).then(response => response.json())
                             .then(() => {
-                                alert("Product Added To Cart!");
+                                alert("Product added to cart!");
+                                updateCartDrawer();
                                 updateCartCount();
                                 popup.style.display = "none";
-                            })
-                    })
-                })
-        })
-    })
+                            });
+                    });
+                });
+        });
+    });
 
+    function updateCartDrawer() {
+        fetch('/cart')
+            .then(response => response.text())
+            .then(html => {
+                const cartDrawer = document.getElementById("cart-drawer");
+                const newCartDrawer = new DOMParser().parseFromString(html, 'text/html').getElementById("cart-drawer");
+                cartDrawer.innerHTML = newCartDrawer.innerHTML;
+                cartDrawer.dispatchEvent(new CustomEvent('updated'));
+            });
+    }
 
     function updateCartCount() {
         fetch('/cart.js')
@@ -78,13 +85,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 const cartCountBubble = document.querySelector(".cart-count-bubble");
                 const cartItemCount = cart.item_count;
 
-                if (startCountBubble) {
+                if (cartCountBubble) {
                     cartCountBubble.querySelector("span[aria-hidden='true']").textContent = cartItemCount;
                     cartCountBubble.querySelector(".visually-hidden").textContent = ${ cartItemCount } item${ cartItemCount !== 1 ? 's' : '' };
                 }
             });
-
-
     }
-
 });
