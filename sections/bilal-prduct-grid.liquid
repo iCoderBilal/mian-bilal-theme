@@ -1,0 +1,43 @@
+{% schema %}
+  {
+    "name": "Product Grid",
+    "settings": [],
+    "blocks": [
+     {
+       "type": "product",
+       "name": "Product",
+       "settings": [
+         {
+           "type": "product",
+           "id": "product",
+           "label": "Select Product"
+         },
+         {
+           "type": "range",
+           "id": "dot_horizontal",
+           "label" : "Dot Horizontal Position (%)",
+           "min": 0 ,
+           "max": 100 ,
+           "step": 1,
+           "default":  50
+         },
+         {
+          "type": "range",
+           "id": "dot_vertical",
+           "label" : "Dot Vertical Position (%)",
+           "min": 0 ,
+           "max": 100 ,
+           "step": 1,
+           "default":  50
+          },
+         
+       ],
+     },
+    ],
+    "presets": [
+      {
+        "name": "Bilal Product Grid"
+      }
+    ]
+  }
+{% endschema %}
