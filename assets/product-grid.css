@@ -15,7 +15,7 @@
     background: white;
     margin-bottom: 3%;
     width: 100%;
-    margin: 0 auto 3% auto;
+    margin: 0 auto 2% auto;
 }
 
 .product-image-wrapper{
@@ -24,11 +24,12 @@
 }
 
 .product-dot{
-width: 25px;
+width: 50px;
 
 border-radius: 50%;
 position: absolute;
 z-index: 999;
+color:black;
 
 }
 
@@ -40,4 +41,13 @@ z-index: 999;
 
 .product-block h3{
     font-size: 22px;
+}
+
+@media screen and (max-width : 650px) {
+    .product-grid{
+        gap: 2%;
+    }
+    .product-block{
+        flex-basis: 48%;
+    }
 }
