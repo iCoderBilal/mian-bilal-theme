@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     productBlocks.forEach(block => {
         const dot = block.querySelector(".product-dot");
         dot.addEventListener("click", function (event) {
-            event.stopPropagation();
+            event.stopPropagation(); // Prevent the click event from bubbling up to the product block
             const productHandle = block.dataset.productHandle;
             fetch(`/products/${productHandle}.js`)
                 .then(response => response.json())
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <span aria-hidden="true">${cartItemCount}</span>
                         <span class="visually-hidden">${cartItemCount} item${cartItemCount !== 1 ? 's' : ''}</span>
                     `;
-                    const cartIconContainer = document.querySelector(".cart-icon-container");
+                    const cartIconContainer = document.querySelector(".header__icon--cart"); // Adjust this selector to your actual cart icon container
                     if (cartIconContainer) {
                         cartIconContainer.appendChild(cartCountBubble);
                     }
