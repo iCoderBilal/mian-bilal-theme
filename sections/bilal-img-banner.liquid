@@ -30,7 +30,7 @@ background-position : center;
 display : flex;
 align-items : center;
 justify-content : center;
-background-image : url("{{ section.settings.banner_image | img_url : "1920x"}}")
+background-image : url("{{ section.settings.banner_image | image_url : '1920x'}}")
      
    {% if section.settings.banner_size == "large" %}
     height : 900px;
