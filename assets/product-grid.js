@@ -11,12 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
         dot.addEventListener("click", function (event) {
             event.stopPropagation(); // Prevent the click event from bubbling up to the product block
             const productHandle = block.dataset.productHandle;
-            fetch(/products/${ productHandle }.js)
+            fetch(`/products/${productHandle}.js`)
                 .then(response => response.json())
                 .then(product => {
                     let variantsHtml = "";
                     product.variants.forEach(variant => {
-                        variantsHtml += <option value="${variant.id}">${ variant.title } - ${ variant.price / 100 } ${ Shopify.currency.active }</option>;
+                        variantsHtml += `<option value="${variant.id}">${variant.title} - ${variant.price / 100} ${Shopify.currency.active}</option>`;
                     });
 
                     popup.innerHTML = `
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (cartCountBubble) {
                     cartCountBubble.querySelector("span[aria-hidden='true']").textContent = cartItemCount;
-                    cartCountBubble.querySelector(".visually-hidden").textContent = ${ cartItemCount } item${ cartItemCount !== 1 ? 's' : '' };
+                    cartCountBubble.querySelector(".visually-hidden").textContent = `${cartItemCount} item${cartItemCount !== 1 ? 's' : ''}`;
                 }
             });
     }

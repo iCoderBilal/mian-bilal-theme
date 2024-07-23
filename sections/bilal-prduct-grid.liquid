@@ -5,60 +5,61 @@
           {% if block.settings.product != blank %}
             {% assign product = all_products[block.settings.product] %}
             <div class="product-image-wrapper">
-              <img src="{{ product.featured_image | img_url: '720x' }}" alt="{{ product.title }}">
-              <div class="product-dot" style="left: {{ block.settings.dot_horizontal }}%; top: {{ block.settings.dot_vertical }}%;">+</div>
+              <img src="{{ product.featured_image | img_url: '760x' }}" alt="{{ product.title }}">
+              <div class="product-dot" style="left: {{ block.settings.dot_horizontal }}%; top: {{ block.settings.dot_vertical }}%;"></div>
             </div>
-
+        
           {% endif %}
         </div>
       {% endfor %}
     </div>
   </section>
-
-
-<link rel="stylesheet" href="{{ 'product-grid.css' | asset_url }}">
-<script src="{{ 'product-grid.js' | asset_url }}"></script>
-
-{% schema %}
+  
+  <link rel="stylesheet" href="{{ 'product-grid.css' | asset_url }}">
+  <script src="{{ 'product-grid.js' | asset_url }}"></script>
+  
+  {% schema %}
   {
     "name": "Product Grid",
     "settings": [],
     "blocks": [
-     {
-       "type": "product",
-       "name": "Product",
-       "settings": [
-         {
-           "type": "product",
-           "id": "product",
-           "label": "Select Product"
-         },
-         {
-           "type": "range",
-           "id": "dot_horizontal",
-           "label" : "Dot Horizontal Position (%)",
-           "min": 0 ,
-           "max": 100 ,
-           "step": 1,
-           "default":  50
-         },
-         {
-          "type": "range",
-           "id": "dot_vertical",
-           "label" : "Dot Vertical Position (%)",
-           "min": 0 ,
-           "max": 100 ,
-           "step": 1,
-           "default":  50
+      {
+        "type": "product",
+        "name": "Product",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Select Product"
           },
-         
-       ],
-     },
+          {
+            "type": "range",
+            "id": "dot_horizontal",
+            "label": "Dot Horizontal Position (%)",
+            "min": 0,
+            "max": 100,
+            "default": 50,
+            "step": 1
+          },
+          {
+            "type": "range",
+            "id": "dot_vertical",
+            "label": "Dot Vertical Position (%)",
+            "min": 0,
+            "max": 100,
+            "default": 50,
+            "step": 1
+          }
+        ]
+      }
     ],
     "presets": [
       {
-        "name": "Bilal Product Grid"
+        "name": "Product Grid",
+        "category": "Custom"
       }
     ]
   }
-{% endschema %}
+  {% endschema %}
+  
+  
