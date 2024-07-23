@@ -1,24 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Select all product blocks
     const productBlocks = document.querySelectorAll(".product-block");
 
+    // Create a popup element for displaying product details
     const popup = document.createElement("div");
     popup.id = "product-popup";
     popup.style.display = "none";
     document.body.appendChild(popup);
 
+    // Add event listeners to product dots
     productBlocks.forEach(block => {
         const dot = block.querySelector(".product-dot");
         dot.addEventListener("click", function (event) {
-            event.stopPropagation();
+            event.stopPropagation(); // Prevent the click event from bubbling up to the product block
+
             const productHandle = block.dataset.productHandle;
+
+            // Fetch product details using Shopify API
             fetch(`/products/${productHandle}.js`)
                 .then(response => response.json())
                 .then(product => {
+                    // Generate HTML for product variants
                     let variantsHtml = "";
                     product.variants.forEach(variant => {
                         variantsHtml += `<option value="${variant.id}">${variant.title} - ${variant.price / 100} ${Shopify.currency.active}</option>`;
                     });
 
+                    // Set popup content
                     popup.innerHTML = `
                         <div class="popup-content">
                             <img class="pop-up-featured-img" src="${product.featured_image}" alt="${product.title}" />
@@ -36,14 +44,19 @@ document.addEventListener("DOMContentLoaded", function () {
                             <button id="close-popup">Close</button>
                         </div>
                     `;
+
+                    // Display the popup
                     popup.style.display = "block";
 
+                    // Close the popup
                     document.getElementById("close-popup").addEventListener("click", function () {
                         popup.style.display = "none";
                     });
 
+                    // Add product to cart
                     document.getElementById("add-to-cart").addEventListener("click", function () {
                         const selectedVariantId = document.getElementById("product-variants").value;
+
                         fetch('/cart/add.js', {
                             method: 'POST',
                             headers: {
@@ -53,7 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                 id: selectedVariantId,
                                 quantity: 1
                             })
-                        }).then(response => response.json())
+                        })
+                            .then(response => response.json())
                             .then(() => {
                                 alert("Product added to cart!");
                                 updateCartDrawer();
@@ -65,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // Function to update the cart drawer
     function updateCartDrawer() {
         fetch('/cart')
             .then(response => response.text())
@@ -76,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
+    // Function to update the cart count bubble
     function updateCartCount() {
         fetch('/cart.js')
             .then(response => response.json())
@@ -84,6 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const cartItemCount = cart.item_count;
 
                 if (!cartCountBubble) {
+                    // Create cart count bubble if it doesn't exist
                     cartCountBubble = document.createElement("div");
                     cartCountBubble.className = "cart-count-bubble";
                     cartCountBubble.innerHTML = `
@@ -95,11 +112,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         cartIconContainer.appendChild(cartCountBubble);
                     }
                 } else {
+                    // Update existing cart count bubble
                     cartCountBubble.querySelector("span[aria-hidden='true']").textContent = cartItemCount;
                     cartCountBubble.querySelector(".visually-hidden").textContent = `${cartItemCount} item${cartItemCount !== 1 ? 's' : ''}`;
                 }
             });
     }
-
-})
-
+});

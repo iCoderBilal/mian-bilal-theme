@@ -1,246 +1,233 @@
-
-
-
 <section id="image-banner">
-<div class="banner">
-<div class="banner-content" style="text-align : {{ section.settings.text_alignment }};">
-<div class="banner-content-container">
-
-<h1 style="color: {{ section.settings.heading_color }}">{{ section.settings.banner_heading }}</h1>
-<p  style="color: {{ section.settings.subheading_color }}">{{ section.settings.banner_subheading }}</p>
-<a href="{{ section.settings.banner_button_link }}" class="banner-button" style="background-color: {{ section.settings.button_background_color }}; color : {{ section.settings.button_text_color }}">{{ section.settings.banner_button_text }}</a>
-</div>
-</div>
-
-</div>
-
-
-
-</section>
-<style>
-#image-banner{
-position: relative;
-overflow : hidden;
-background-color : {{ section.settings.background_color }};
-}
-
-
-#image-banner .banner{
-width: 100%;
-background-size : cover;
-background-position : center;
-display : flex;
-align-items : center;
-justify-content : center;
-background-image: url("{{ section.settings.banner_image | img_url : '1920x'}}");
-
- 
-   {% if section.settings.banner_size == "large" %}
-    height : 900px;
-    {% elsif section.settings.banner_size == "medium" %}     
-    height : 780px;
-
-    {% else %}
-    height :  700px;
-
-    {% endif %}
-}
-
-.banner-content-container{
-max-width: 30vw;
-padding-bottom: 2vw;
-padding-left: 5vw;
-}
-
-#image-banner .banner-content{
-color: white;
-padding: 20px;
-border-radius: 5px;
-width : 100%;
-height : 100%;
-display : flex;
-align-items: flex-end;
-justify-content : {% if section.settings.text_alignment == 'left' %} flex-start {% else %} center {% endif %}
-}
-
-#image-banner .banner-button{
-display: inline-block;
-padding : 10px 20px;
-text-decoration : none;
-border-radius : 5px;
-margin-top: 10px
-}
-
-#image-banner .banner-button:hover{
-background-color : white;
-color: black;
-}
-
-.banner-content h1{
-font-size: 3.5vw
-}
-
-.banner-content p{
-font-size : 1.2vw;
-margin-top: -30px;
-}
-
-@media screen and (max-width : 768px){
-#image-banner .banner{
-width: 100vw;
-height : 112vw !important;
-background-image : url("{{ section.settings.mobile_banner_image | img_url: '768x' }}")
-
-}
-
-#image-banner .banner-content{
-display : block;
-
-}
-
-
-.banner-content-container{
-max-width : 100%;
-padding-bottom : 2vw;
-padding-left: 0vw;
-}
-
-.banner-content-container a{
-position : absolute;
-bottom : 30px;
-left : 50%;
-transform : translateX(-50%);
-
-}
-
-.banner-content h1{
-font-size: 9vw;
-text-align: center;
-
-}
-
-.banner-content p{
-font-size : 3vw;
-text-align : center;
-}
-
-}
-</style>
-
-{% schema %}
-{
-"name" : "Image Banner",
-"settings" : [
-    
-    {
-      "type": "image_picker",
-      "id": "banner_image",
-      "label": "Banner Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "mobile_banner_image",
-      "label": "Mobile Banner Image"
-    },
-    {
-      "type": "text",
-      "id": "banner_heading",
-      "label": "Banner Heading"
-    },
-    {
-      "type": "text",
-      "id": "banner_subheading",
-      "label": "Banner Subheading"
-    },
-    {
+    <div class="banner">
+      <!-- Banner Content Container with text alignment -->
+      <div class="banner-content" style="text-align: {{ section.settings.text_alignment }};">
+        <div class="banner-content-container">
+          <!-- Banner Heading with dynamic color -->
+          <h1 style="color: {{ section.settings.heading_color }}">{{ section.settings.banner_heading }}</h1>
+          <!-- Banner Subheading with dynamic color -->
+          <p style="color: {{ section.settings.subheading_color }}">{{ section.settings.banner_subheading }}</p>
+          <!-- Banner Button with dynamic background and text color -->
+          <a href="{{ section.settings.banner_button_link }}" class="banner-button" style="background-color: {{ section.settings.button_background_color }}; color: {{ section.settings.button_text_color }}">{{ section.settings.banner_button_text }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <style>
+    /* Main Banner Section */
+    #image-banner {
+      position: relative;
+      overflow: hidden;
+      background-color: {{ section.settings.background_color }};
+    }
+  
+    /* Banner Styles */
+    #image-banner .banner {
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: url("{{ section.settings.banner_image | img_url: '1920x' }}");
+  
+      /* Banner Size */
+      {% if section.settings.banner_size == "large" %}
+        height: 900px;
+      {% elsif section.settings.banner_size == "medium" %}
+        height: 780px;
+      {% else %}
+        height: 700px;
+      {% endif %}
+    }
+  
+    /* Banner Content Container */
+    .banner-content-container {
+      max-width: 30vw;
+      padding-bottom: 2vw;
+      padding-left: 5vw;
+    }
+  
+    /* Banner Content Styles */
+    #image-banner .banner-content {
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: {% if section.settings.text_alignment == 'left' %} flex-start {% else %} center {% endif %};
+    }
+  
+    /* Banner Button Styles */
+    #image-banner .banner-button {
+      display: inline-block;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+  
+    #image-banner .banner-button:hover {
+      background-color: white;
+      color: black;
+    }
+  
+    /* Heading and Subheading Styles */
+    .banner-content h1 {
+      font-size: 3.5vw;
+    }
+  
+    .banner-content p {
+      font-size: 1.2vw;
+      margin-top: -30px;
+    }
+  
+    /* Responsive Styles for Mobile */
+    @media screen and (max-width: 768px) {
+      #image-banner .banner {
+        width: 100vw;
+        height: 112vw !important;
+        background-image: url("{{ section.settings.mobile_banner_image | img_url: '768x' }}");
+      }
+  
+      #image-banner .banner-content {
+        display: block;
+      }
+  
+      .banner-content-container {
+        max-width: 100%;
+        padding-bottom: 2vw;
+        padding-left: 0vw;
+      }
+  
+      .banner-content-container a {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+  
+      .banner-content h1 {
+        font-size: 9vw;
+        text-align: center;
+      }
+  
+      .banner-content p {
+        font-size: 3vw;
+        text-align: center;
+      }
+    }
+  </style>
+  
+  {% schema %}
+  {
+    "name": "Image Banner",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "banner_image",
+        "label": "Banner Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_banner_image",
+        "label": "Mobile Banner Image"
+      },
+      {
+        "type": "text",
+        "id": "banner_heading",
+        "label": "Banner Heading"
+      },
+      {
+        "type": "text",
+        "id": "banner_subheading",
+        "label": "Banner Subheading"
+      },
+      {
         "type": "text",
         "id": "banner_button_text",
         "label": "Button Text"
       },
-    {
-      "type": "url",
-      "id": "banner_button_link",
-      "label": "Button Link"
-    },
-    {
-      "type": "select",
-      "id": "banner_size",
-      "label": "Banner Size",
-      "options": [
-        {
-          "value": "large",
-          "label": "Large"
-        },
-        {
-         "value": "medium",
-          "label": "Medium"
-        },
-        {
+      {
+        "type": "url",
+        "id": "banner_button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "select",
+        "id": "banner_size",
+        "label": "Banner Size",
+        "options": [
+          {
+            "value": "large",
+            "label": "Large"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
             "value": "small",
-             "label": "Small"
-           }
-        
-      ],
-      "default": "small"
-    },
-    {
-      "type": "select",
-      "id": "text_alignment",
-      "label": "Text Alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "Left"
-        },
-        {
-        "value" : "center",
-        "label" : "Center"
-        }
-        
-      ],
-      "default": "left"
-    },
-    {
-    "type": "color",
-    "id": "subheading_color",
-    "label": "Subheading Color",
-    "default" : "#000000"
-    
-    },
-
-    {
+            "label": "Small"
+          }
+        ],
+        "default": "small"
+      },
+      {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Text Alignment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "color",
+        "id": "heading_color",
+        "label": "Heading Color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "subheading_color",
+        "label": "Subheading Color",
+        "default": "#000000"
+      },
+      {
         "type": "color",
         "id": "button_background_color",
         "label": "Button Background Color",
-        "default" : "#000000"
-        
- },
- {
-    "type": "color",
-    "id": "background_color",
-    "label": "Background Color",
-    "default" : "#fff"
-    
-},
-
-{
-    "type": "color",
-    "id": "button_text_color",
-    "label": "Button Text Color",
-    "default" : "#fff"
-    
-},
-
-
-    
-],
-"presets": [
-    {
-    "name" : "bilal Image Banner"
-    }
-]
-}
-
-
-
-{% endschema %}
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button Text Color",
+        "default": "#ffffff"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Bilal Image Banner"
+      }
+    ]
+  }
+  {% endschema %}
+  

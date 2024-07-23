@@ -1,21 +1,25 @@
 <section id="product-grid">
+    <!-- Section Heading -->
     <h1 class="grid-heading">{{ section.settings.gridheading }}</h1>
+    
     <div class="product-grid">
       {% for block in section.blocks %}
         <div class="product-block" data-product-handle="{{ block.settings.product }}">
           {% if block.settings.product != blank %}
             {% assign product = all_products[block.settings.product] %}
             <div class="product-image-wrapper">
+              <!-- Product Image -->
               <img src="{{ product.featured_image | img_url: '760x' }}" alt="{{ product.title }}">
+              <!-- Product Dot with Dynamic Position -->
               <div class="product-dot" style="left: {{ block.settings.dot_horizontal }}%; top: {{ block.settings.dot_vertical }}%;">+</div>
             </div>
-        
           {% endif %}
         </div>
       {% endfor %}
     </div>
   </section>
   
+  <!-- Linking CSS and JS files -->
   <link rel="stylesheet" href="{{ 'product-grid.css' | asset_url }}">
   <script src="{{ 'product-grid.js' | asset_url }}"></script>
   
@@ -23,11 +27,11 @@
   {
     "name": "Product Grid",
     "settings": [
-        {
-          "type": "text",
-          "id": "gridheading",
-          "label": "Section Heading"
-        },
+      {
+        "type": "text",
+        "id": "gridheading",
+        "label": "Section Heading"
+      }
     ],
     "blocks": [
       {
@@ -68,5 +72,4 @@
     ]
   }
   {% endschema %}
-  
   
