@@ -151,4 +151,8 @@ color:black;
     .product-block{
         flex-basis: 48%;
     }
+
+    #product-popup .popup-content{
+        max-width: 90vw;
+    }
 }
