@@ -13,6 +13,7 @@
       "type": "bilal-img-banner",
       "settings": {
         "banner_image": "shopify:\/\/shop_images\/Group_1000007949_3d9182c1-7f77-426c-8768-6898dc6265ec.png",
+        "mobile_banner_image": "shopify:\/\/shop_images\/Frame_1.png",
         "banner_heading": "The Gift Guide",
         "banner_subheading": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season.",
         "banner_button_text": "Shop Now",
