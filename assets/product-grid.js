@@ -21,14 +21,70 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
 
 
-                    console.log("this is the popu")
+
                     popup.innerHTML = `
                 <div class="popup-content">
-                <h1> This is the Pop Up</h1>
+                <img  class="pop-up-featured-img" src="${product.featured_image}" />
+
+                <div class="product-details">
+                <div>
+                <h2>${product.titles}</h2>
+                <p class="product-price">${product.price / 100} ${shopify.currency.active}</p>
+                <p>${product.description}</p>
+                
                 </div>
-                `
+                
+                </div>
+                <div class="addCartPage">
+                 <select id="product-variants">${variantsHTML}</select>
+                 <button id="add-to-cart">Add to Cart</button>
+                </div>
+                </div>
+                `;
+
+                    popup.style.display = "block";
+                    document.getElementById("close-popup").addEventListener("click", function () {
+                        popup.style.display = "none";
+                    });
+
+                    document.getElementById("add-to-cart").addEventListener("click", function () {
+                        const selectVariantId = document.getElementById("product-variants").value;
+                        fetch('/cart/add.js', {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": 'application/json'
+                            },
+                            body: JSON.stringify({
+                                id: selectedVariantId,
+                                quantity: 1
+                            })
+
+                        }).then(response => response.json())
+                            .then(() => {
+                                alert("Product Added To Cart!");
+                                updateCartCount();
+                                popup.style.display = "none";
+                            })
+                    })
                 })
         })
     })
 
-})
+
+    function updateCartCount() {
+        fetch('/cart.js')
+            .then(response => response.json())
+            .then(cart => {
+                const cartCountBubble = document.querySelector(".cart-count-bubble");
+                const cartItemCount = cart.item_count;
+
+                if (startCountBubble) {
+                    cartCountBubble.querySelector("span[aria-hidden='true']").textContent = cartItemCount;
+                    cartCountBubble.querySelector(".visually-hidden").textContent = ${ cartItemCount } item${ cartItemCount !== 1 ? 's' : '' };
+                }
+            });
+
+
+    }
+
+});
