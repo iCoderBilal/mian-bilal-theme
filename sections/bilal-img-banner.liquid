@@ -84,6 +84,16 @@ font-size: 3.5vw
 font-size : 1.2vw;
 margin-top: -30px;
 }
+
+@media screen and (max-width : 768px){
+#image-banner .banner{
+width: 100vw;
+height : 112vw !important;
+background-image : url("{{ section.settings.mobile_banner_image | img_url: '768x' }}")
+
+}
+
+}
 </style>
 
 {% schema %}
