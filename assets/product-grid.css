@@ -4,7 +4,7 @@
     gap : 3%;
     background: white;
     padding: 2vw;
-    justify-content: center;
+    
 }
 
 .product-block{
@@ -14,6 +14,8 @@
     border: 3px solid white;
     background: white;
     margin-bottom: 3%;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .product-image-wrapper{
@@ -34,6 +36,7 @@ z-index: 999;
 .product-block img{
     width: 100%;
     margin: 0 auto;
+    height: 110%;
 }
 
 .product-block h3{
