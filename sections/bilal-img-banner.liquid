@@ -30,12 +30,8 @@ background-position : center;
 display : flex;
 align-items : center;
 justify-content : center;
-{% if section.settings.banner_image %}
-    background-image : url("{{ section.settings.banner_image | img_url : "1920x"}}")
-    {% else %}
-    background-image : url("https://cdn.shopify.com/s/files/1/0886/0726/0966/files/Frame_1.png?v=1721758573");
-
-{% endif %}   
+background-image : url("{{ section.settings.banner_image | img_url : "1920x"}}")
+     
    {% if section.settings.banner_size == "large" %}
     height : 900px;
     {% elsif section.settings.banner_size == "medium" %}     
