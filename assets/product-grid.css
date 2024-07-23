@@ -9,7 +9,8 @@
 
 .grid-heading{
     font-size: 26px;
-    margin: 10px 30px;
+    margin: 10px;
+    text-align: center;
 }
 
 .product-block{
