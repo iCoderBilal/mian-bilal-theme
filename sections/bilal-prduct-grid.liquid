@@ -1,4 +1,19 @@
+<section id="product-grid">
+    <div class="product-grid">
+      {% for block in section.blocks %}
+        <div class="product-block" data-product-handle="{{ block.settings.product }}">
+          {% if block.settings.product != blank %}
+            {% assign product = all_products[block.settings.product] %}
+            <div class="product-image-wrapper">
+              <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+              <div class="product-dot" style="left: {{ block.settings.dot_horizontal }}%; top: {{ block.settings.dot_vertical }}%;"></div>
+            </div>
 
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
 
 
 {% schema %}
